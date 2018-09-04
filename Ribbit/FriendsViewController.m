@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
   
+    // Fix Bug #3, #4
     // Init one time the list of users
     self.users = [self allUsers];
 }
@@ -32,6 +33,7 @@
 
 }
 
+// Fix Bug #3, #4 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier  isEqual: @"showEditFriends"]) {
     EditFriendsViewController *editFriendsViewController = (EditFriendsViewController *)segue.destinationViewController;

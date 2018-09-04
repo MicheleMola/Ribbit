@@ -48,6 +48,8 @@
 		B3EB1F0C1D6DBA1B00B5FDAD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB1F0B1D6DBA1B00B5FDAD /* User.m */; };
 		B3EB1F0F1D6F034A00B5FDAD /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB1F0E1D6F034A00B5FDAD /* File.m */; };
 		B3EB1F121D6F035800B5FDAD /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB1F111D6F035800B5FDAD /* Message.m */; };
+		DED6CD32213EC08E00C9743B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED6CD31213EC08E00C9743B /* AVFoundation.framework */; };
+		DED6CD34213EC0FB00C9743B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED6CD33213EC0FB00C9743B /* AVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		B3EB1F101D6F035800B5FDAD /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		B3EB1F111D6F035800B5FDAD /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		B3EB1F131D6F06A400B5FDAD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DED6CD31213EC08E00C9743B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DED6CD33213EC0FB00C9743B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED6CD34213EC0FB00C9743B /* AVKit.framework in Frameworks */,
+				DED6CD32213EC08E00C9743B /* AVFoundation.framework in Frameworks */,
 				8D5ED97817B04E060079548F /* MediaPlayer.framework in Frameworks */,
 				8DCDADE517A82CE5008AAA28 /* AudioToolbox.framework in Frameworks */,
 				8DCDADE617A82CE5008AAA28 /* CFNetwork.framework in Frameworks */,
@@ -154,6 +160,8 @@
 		8DCDADAA17A6B3CC008AAA28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DED6CD33213EC0FB00C9743B /* AVKit.framework */,
+				DED6CD31213EC08E00C9743B /* AVFoundation.framework */,
 				8DCDADDC17A82CE5008AAA28 /* AudioToolbox.framework */,
 				8DCDADDD17A82CE5008AAA28 /* CFNetwork.framework */,
 				8DCDADAF17A6B3CC008AAA28 /* CoreGraphics.framework */,

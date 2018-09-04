@@ -143,10 +143,21 @@
 
 - (IBAction)send:(id)sender {
     if (self.image == nil && [self.videoFilePath length] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Try again!"
-                                                            message:@"Please capture or select a photo or video to share!"
-                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Try again!"
+//                                                            message:@"Please capture or select a photo or video to share!"
+//                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alertView show];
+      
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Try again!"
+                                                                       message:@"Please capture or select a photo or video to share!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+      
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+      
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+      
         [self presentViewController:self.imagePicker animated:NO completion:nil];
     }
     else {
@@ -163,7 +174,10 @@
     NSString *fileType;
     
     if (self.image != nil) {
-        UIImage *newImage = self.image;
+        // Fix Bug #5: There are no memory peaks
+        UIImage *newImage = [[UIImage alloc] init];
+        newImage = [self resizeImage:self.image toWidth:120 andHeight:120];
+      
         fileData = UIImagePNGRepresentation(newImage);
         fileName = [NSString stringWithFormat:@"%f.png",[NSDate timeIntervalSinceReferenceDate]];
         fileType = @"image";
@@ -177,10 +191,18 @@
     File *file = [File fileWithName:fileName data:fileData];
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!"
-                                                                message:@"Please try sending your message again."
-                                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!"
+//                                                                message:@"Please try sending your message again."
+//                                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"An error occurred!"
+                                                                           message:@"Please try sending your message again."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+          
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+          
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
         else {
             Message *message = [[Message alloc] init];
@@ -192,10 +214,19 @@
           
             [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (error) {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!"
-                                                                        message:@"Please try sending your message again."
-                                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alertView show];
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!"
+//                                                                        message:@"Please try sending your message again."
+//                                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                    [alertView show];
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"An error occurred!"
+                                                                                   message:@"Please try sending your message again."
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                  
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                  
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
                 }
                 else {
                     // Everything was successful!
@@ -209,7 +240,6 @@
 - (void)reset {
     self.image = nil;
     self.videoFilePath = nil;
-    self.imagePicker = nil;
     [self.recipients removeAllObjects];
 }
 
