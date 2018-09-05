@@ -19,9 +19,9 @@
 {
     [super viewDidLoad];
   
-  [self.tableView reloadData];
+    [self.tableView reloadData];
   
-  self.currentUser = [User currentUser];
+    self.currentUser = [User currentUser];
   
   //self.users = [self allUsers];
   

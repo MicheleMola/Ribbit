@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
 
+    // Fix Bug #6
     self.moviePlayer = [[AVPlayerViewController alloc] init];
     
     User *currentUser = [User currentUser];
@@ -85,7 +86,6 @@
       
         // Fix Bug #6
         self.moviePlayer.player = [AVPlayer playerWithURL: videoFile.fileURL];
-      
         [self presentViewController:self.moviePlayer animated:YES completion:^{
           [self.moviePlayer.player play];
         }];
